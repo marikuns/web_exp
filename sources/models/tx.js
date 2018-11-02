@@ -10,5 +10,7 @@ export const txs=[
 ]
 export const addrbook=[
     {addr:"xfsurfoeuroweoruwowoir",note:"Jim Raynor"},
-    {addr:"xfsurgfdgdf34oruwowoir",note:"Sara Kerrygan"},
+    {addr:"xfsurgfdgdf34oruwowoir",note:"Sarah Kerrigan"},
+    {addr:"xfsur543454oruwowoir",note:"Overmind"},
+    {addr:"xfsurgfdggfdgwowoir",note:"Tassadar"},
 ]
