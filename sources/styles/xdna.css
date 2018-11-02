@@ -1,0 +1,55 @@
+.infoblock{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background: #1ca1c1;
+    color: white;
+    margin: 10px;
+    line-height: 27px;
+    border-radius: 10px;
+}
+.page_title{
+    font-weight: 400;
+    font-size: 16pt;
+}
+.page_subtitle{
+    font-weight: 100;
+    font-size: 14pt;
+}
+.xdna_logo{
+    background-image: url('/img/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:right; 
+    height: 100%;
+    width:95%;
+    margin-right: 30px;
+}
+
+.txlast{
+    width:276px;
+    height:50px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 10px;
+    
+
+}
+.txlast>.dt{
+    color: grey;
+}
+.txlast.d0>.ammount{
+    color: green;
+    font-size: 14px;
+}
+.txlast.d1>.ammount{
+    color: red;
+    font-size: 14px;
+}
+.txlast.d0{
+    background: #e4fbe4;
+}
+.txlast.d1{
+    background: #fff0f0;
+}
