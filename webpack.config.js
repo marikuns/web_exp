@@ -62,7 +62,8 @@ module.exports = function(env) {
 			})
 		],
 		devServer:{
-			stats:"errors-only"
+			stats:"errors-only",
+			allowedHosts:[".xdna.io"]
 		}
 	};
 
