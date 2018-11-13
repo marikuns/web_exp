@@ -39,15 +39,30 @@ export const login={
         var resp=webix.ajax().sync().post(api_addr+"oauth/token",data);
         
         return JSON.parse(resp.responseText);
-    }
+    },
+    token:""
 
 
 
 }
 export const wallet={
     get_balanceAsync:(token)=>{
-       return webix.ajax().headers({Authorization:token}).get(api_addr+"api/v1/wallet/get-balance")        
+       return webix.ajax().headers({Authorization:"Bearer "+login.token}).get(api_addr+"api/v1/wallet/get-balance")        
+    },
+    get_txs:(token)=>{
+        return webix.ajax().headers({Authorization:"Bearer "+login.token}).get(api_addr+"api/v1/wallet/get-transactions")        
+    },
+    get_req:(token)=>{
+        return webix.ajax().headers({Authorization:"Bearer "+login.token}).get(api_addr+"api/v1/wallet/payment-requests")        
+    },
+    post_makereq:(label,token)=>{
+        return webix.ajax().headers({Authorization:"Bearer "+login.token}).post(api_addr+"api/v1/wallet/new-payment-request",{label:label});     
+
+    },
+    post_pay:(data)=>{
+        return webix.ajax().headers({Authorization:"Bearer "+login.token}).post(api_addr+"api/v1/wallet/transfer-to-address",data);     
     }
+
 }
 export const session={
     status:()=>{
@@ -64,4 +79,19 @@ export const session={
     },
     setapp:(t)=>{app=t;}
     
+}
+export const helper={
+     timeConverter:(UNIX_timestamp)=> {
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+    
+        var time = date + ' ' + month + ' ' + year + ' ' + (hour < 10 ? '0' + hour : hour) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+        return time;
+    }
 }

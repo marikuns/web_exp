@@ -57,3 +57,19 @@
     height: 135px;
     width:135px;
 }
+.category{
+    width: 20px;
+    height: 20px;
+}
+.category.receive{
+    background-image: url("/img/pl.png")
+}
+.category.send{
+    background-image: url("/img/mn.png")
+}
+.amreceive{
+    color:#059e05;
+}
+.amsend{
+    color:#b40000;
+}
