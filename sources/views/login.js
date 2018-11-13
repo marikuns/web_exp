@@ -8,7 +8,7 @@ export default class LoginView extends JetView{
             rows:[
                 { type:"header", template: this.app.config.name },
                 { view:"text", name:"login", label:"User Name", labelPosition:"top" ,type:"clean"},
-                { view:"text", type:"password", name:"pass", label:"Password", labelPosition:"top" ,type:"clean"},
+                { view:"text", type:"password", name:"pass", label:"Password", labelPosition:"top" },
                 { view:"button", value:"Login", click:() => this.do_login(), hotkey:"enter",type:"clean" }
             ],
             rules:{

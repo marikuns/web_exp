@@ -1,5 +1,5 @@
 var api_addr="http://api-wallet.xdna.io/"
-
+var app={}
 export const login={
     keyweb:"R8W6FCIv12j8IHdHovMa4o2DA3K40k9p9TM9wl6J",
     get_code:(cb)=>{
@@ -37,6 +37,7 @@ export const login={
             password:p
         }
         var resp=webix.ajax().sync().post(api_addr+"oauth/token",data);
+        
         return JSON.parse(resp.responseText);
     }
 
@@ -50,7 +51,7 @@ export const wallet={
 }
 export const session={
     status:()=>{
-        return wallet.get_balanceAsync(session.app.authdata.access_token)
+        return wallet.get_balanceAsync(app.authdata.access_token)
             .then(a => a.json());
     },
     
@@ -61,6 +62,6 @@ export const session={
         return webix.ajax().post("server/login.php?logout")
             .then(a => a.json());
     },
-    app:{}
+    setapp:(t)=>{app=t;}
     
 }

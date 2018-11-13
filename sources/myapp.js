@@ -1,6 +1,6 @@
 import "./styles/app.css";
 import "./styles/xdna.css";
-import {login,session} from "models/api.js"
+import {login,session,wallet} from "models/api.js"
 import {User} from "plugins/user.js"
 import {JetApp, EmptyRouter, HashRouter,plugins } from "webix-jet";
 
@@ -20,9 +20,14 @@ export default class MyApp extends JetApp{
 		this.acc={
 			balance:153.33
 		};
-		session.app=this;
+		session.setapp(this);
 		this.authdata={};
 		this.use(User,{model:session,login:"/enter/login",reg:"/enter/reg"});
+		this.on('app:user:login',this.afterLogin);
+	}
+	afterLogin(){
+		var balance=wallet.get_balanceAsync(this.authdata.access_token).then(a=>a.json());
+		this.acc.balance=balance.data.balance;
 	}
 }
 
