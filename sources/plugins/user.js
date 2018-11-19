@@ -20,6 +20,9 @@ export function User(app, _view, config) {
                 user = data;
             });
         },
+        getStatusSync:function (server) {
+            return model.status(true)
+        },
         login: function (name, pass) {
             return model.login(name, pass).then(function (data) {
                 user = data;

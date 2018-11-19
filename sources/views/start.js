@@ -1,4 +1,5 @@
 import { JetView, plugins } from "webix-jet";
+import { wallet, helper } from "models/api.js"
 import { txs } from "models/tx"
 export default class MainView extends JetView {
 	config() {
@@ -14,9 +15,14 @@ export default class MainView extends JetView {
 					header: "Last transactions",
 					body: {
 						view: "dataview", width: 300,
-						data: txs,
 						xCount: 1,
-						template: (o) => { return `<div class='txlast d${o.dir}'><span class='ammount'>${o.ammount}</span><span class='dt'>${timeConverter(o.dt)}</span><div>` },
+											
+						url: () => {
+							return wallet.get_txs().then((d) => {
+								return d.json().data.transactions;
+							})
+						},
+						template: (o) => { return `<div class='txlast d${o.category}'><span class='ammount'>${o.amount}</span><span class='dt'>${timeConverter(o.time)}</span><div>` },
 						type: {
 							width: 300,
 							height: 50,

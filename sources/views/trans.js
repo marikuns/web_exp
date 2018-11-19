@@ -20,7 +20,14 @@ export default class TxView extends JetView {
                                 },
                                 {
                                     view: "datatable",
-
+                                    on:{
+                                        onBeforeLoad:function(){
+                                            this.showOverlay("Loading...");
+                                        },
+                                        onAfterLoad:function(){
+                                            this.hideOverlay();
+                                        }
+                                    },
                                     columns: [
                                         /*{
                                             id: "category", header: "Type", template: (o) => {

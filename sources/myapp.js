@@ -21,19 +21,35 @@ export default class MyApp extends JetApp {
 			balance: 153.33
 		};
 		session.setapp(this);
-		this.authdata = {};
-		this.use(User, { model: session, login: "/enter/login", reg: "/enter/reg" });
+		this.authdata = {}
+		try {
+			var adata = webix.storage.cookie.get("adata")
+			if (adata)
+				this.authdata = JSON.parse(adata);
+		}
+		catch (e) { }
+		var a = session.status(true);
+		if (a.status != 200)
+			this.use(User, { model: session, login: "/enter/login", reg: "/enter/reg" });
+		else
+			this.use(User, { model: session, login: "/enter/login", reg: "/enter/reg", user: this.authdata });
 		this.on('app:user:login', this.afterLogin);
 	}
 	afterLogin() {
+
 		this.authdata = this.getService("user").getUser();
-		login.token=this.authdata.access_token;
-		var balance = wallet.get_balanceAsync()
+		webix.storage.cookie.put("adata", JSON.stringify(this.authdata))
+		login.token = this.authdata.access_token;
+		this.get_balance();
+		this.testAPI();
+
+	}
+	get_balance() {
+		wallet.get_balanceAsync()
 			.then((a) => {
 				console.log(a);
 				this.acc.balance = a.json().data.balance;
 				this.refreshUI(['balance_label'])
-				this.testAPI();
 				return a;
 			});
 

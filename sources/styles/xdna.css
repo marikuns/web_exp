@@ -39,18 +39,18 @@
 .txlast>.dt{
     color: grey;
 }
-.txlast.d0>.ammount{
+.txlast.dreceive>.ammount{
     color: green;
     font-size: 14px;
 }
-.txlast.d1>.ammount{
+.txlast.dsend>.ammount{
     color: red;
     font-size: 14px;
 }
-.txlast.d0{
+.txlast.dreceive{
     background: #e4fbe4;
 }
-.txlast.d1{
+.txlast.dsend{
     background: #fff0f0;
 }
 .qrcodeimg{

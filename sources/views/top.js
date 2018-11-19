@@ -6,6 +6,7 @@ export default class TopView extends JetView {
 
 	config() {
 		var acc = this.app.acc;
+
 		var infoblock = {
 			paddingX: 5,
 			paddingY: 5,
@@ -52,6 +53,7 @@ export default class TopView extends JetView {
 	}
 	init() {
 		this.use(plugins.Menu, "top:menu");
+		this.app.get_balance();
 
 	}
 }

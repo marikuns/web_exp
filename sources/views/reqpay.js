@@ -8,6 +8,7 @@ export default class ReqView extends JetView {
         var ui = {
             type: "space",
             id: "reqcont",
+
             rows: [
                 {
                     responsive: "reqcont",
@@ -15,7 +16,7 @@ export default class ReqView extends JetView {
                         {
                             view: "form",
                             id: "reqform",
-                            minWidth: 300,
+                            minWidth: 600,
                             elements: [
                                 { view: "text", label: "Label", name: "label" },
 
@@ -32,13 +33,23 @@ export default class ReqView extends JetView {
                             }
                         },
                         {
-                            minWidth: 300, rows: [
+                            minWidth: 300,minHeight:400, gravity:1,
+                            rows: [
                                 {
                                     template: "Request history", height: 40, css: "page_subtitle"
                                 },
+                                
                                 {
-                                    view: "datatable",
-                               
+                                    view: "datatable",height:0,
+                                    on:{
+                                        onBeforeLoad:function(){
+                                            this.showOverlay("Loading...");
+                                        },
+                                        onAfterLoad:function(){
+                                            this.hideOverlay();
+
+                                        }
+                                    },
                                     columns:[
                                         {id:"label",header:"Label",fillspace:1},
                                         {id:"address",header:"Address",fillspace:2}
@@ -48,7 +59,7 @@ export default class ReqView extends JetView {
                                             return d.json().data.payment_requests;
                                         })
                                     }
-                                }
+                                },{height:1}
                             ]
                         }
                     ]
