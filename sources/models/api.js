@@ -69,9 +69,12 @@ export const wallet = {
 }
 export const session = {
     status: (b) => {
-        if (b)
+       try{ if (b)
             return wallet.get_balanceSync(app.authdata.access_token);
-        return wallet.get_balanceAsync(app.authdata.access_token);
+        return wallet.get_balanceAsync(app.authdata.access_token);}
+        catch(ex){
+            return {status:-1};
+        }
     },
 
     login: (user, pass) => {

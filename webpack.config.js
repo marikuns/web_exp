@@ -63,7 +63,7 @@ module.exports = function(env) {
 		],
 		devServer:{
 			stats:"errors-only",
-			allowedHosts:[".xdna.io"]
+			disableHostCheck: true,  
 		}
 	};
 

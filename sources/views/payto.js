@@ -4,7 +4,7 @@ import { JetView, plugins } from "webix-jet";
 
 
 
-export default class ReqView extends JetView {
+export default class PayView extends JetView {
     config() {
         var ui = {
             rows: [

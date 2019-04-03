@@ -2,13 +2,23 @@ import {JetView} from "webix-jet";
 
 export default class LoginView extends JetView{
     config(){
-        const login_form = {
-            view:"form", localId:"login:form",
+       
+        var ui={rows:[
+            {
+                id: "formphr", type: "clean",
+                template: 'http->templates/login.html'
+            }]
+        };
+        return ui;
+    }
+    drawForm(){
+         const login_form = {
+            view:"form", localId:"login:form",container:"formplacer",
             width:400, borderless:false, margin:10,
             rows:[
-                { type:"header", template: this.app.config.name },
-                { view:"text", name:"login", label:"User Name", labelPosition:"top" ,type:"clean"},
-                { view:"text", type:"password", name:"pass", label:"Password", labelPosition:"top" },
+
+                { view:"text", name:"login",placeholder:"User Name", label:"User Name", labelPosition:"top" ,type:"clean"},
+                { view:"text", type:"password", name:"pass",placeholder:"Password", label:"Password", labelPosition:"top" },
                 { view:"button", value:"Login", click:() => this.do_login(), hotkey:"enter",type:"clean" }
             ],
             rules:{
@@ -16,14 +26,13 @@ export default class LoginView extends JetView{
                 pass:webix.rules.isNotEmpty
             }
         };
-
-        return {
-            cols:[{}, { rows:[{}, login_form, {}]}, {}]
-        };
+        webix.ui(login_form);
     }
 
     init(view){
-        view.$view.querySelector("input").focus();
+       // view.$view.querySelector("input").focus();
+        this.drawForm();
+        document.getElementById("loading_overlay").style="display:none;";
     }
 
     do_login(){

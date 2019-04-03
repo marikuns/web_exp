@@ -73,3 +73,33 @@
 .amsend{
     color:#b40000;
 }
+
+
+
+
+.xdnatable .webix_hcell{
+    background:#fff;
+   
+    font-family: "Poppins", sans-serif;
+    font-weight:bold;
+
+}
+.xdnatable .webix_column{
+   
+    font-family: "Poppins", sans-serif;
+    background:#fff;
+}
+.xdnatable .webix_column > div{
+    
+    font-family: "Poppins", sans-serif;
+    border-color:#fff;
+}
+.webix_view{
+    font-family: "Poppins", sans-serif;
+}
+.webix_inp_label, .webix_inp_top_label, .webix_forminput legend, 
+.webix_el_label,.webix_el_text input, .webix_el_search input, 
+.webix_el_combo input, .webix_el_datepicker input, .webix_el_colorpicker input,
+.webix_el_box .webixtype_form, .webix_uploader button {
+    font-family: "Poppins", sans-serif;
+}

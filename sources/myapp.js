@@ -1,5 +1,6 @@
 import "./styles/app.css";
 import "./styles/xdna.css";
+
 import { login, session, wallet } from "models/api.js"
 import { User } from "plugins/user.js"
 import { JetApp, EmptyRouter, HashRouter, plugins } from "webix-jet";
@@ -18,7 +19,9 @@ export default class MyApp extends JetApp {
 
 		super({ ...defaults, ...config });
 		this.acc = {
-			balance: 153.33
+			balance: 153.33,
+			mnodes:{lmc:"-",mnc:"-",fmc:"-"},
+			blockchain:{blockc:"-",hrate:"-",reward:"-",lvl:"-"}
 		};
 		session.setapp(this);
 		this.authdata = {}
@@ -40,8 +43,7 @@ export default class MyApp extends JetApp {
 		this.authdata = this.getService("user").getUser();
 		webix.storage.cookie.put("adata", JSON.stringify(this.authdata))
 		login.token = this.authdata.access_token;
-		this.get_balance();
-		this.testAPI();
+		this.loadData();
 
 	}
 	get_balance() {
@@ -49,18 +51,25 @@ export default class MyApp extends JetApp {
 			.then((a) => {
 				console.log(a);
 				this.acc.balance = a.json().data.balance;
-				this.refreshUI(['balance_label'])
+				this.refreshUI(['balance_bage'])
 				return a;
 			});
 
 	}
-	refreshUI(params) {
-		for (var a in params) {
-			var name = params[a];
+	refreshUI(params,prop) {
+
+			var name = params;
 			var el = $$(name)
 			if (el)
+			{
+				if(prop)
+					el.parse(this.acc[prop])
+				else
+					el.setValues(this.acc)
 				el.refresh();
-		}
+
+			}
+		
 	}
 	testAPI() {
 		var token = this.authdata.access_token;
@@ -68,6 +77,14 @@ export default class MyApp extends JetApp {
 		wallet.get_txs().then(a => console.log(a.json()));
 		wallet.get_req().then(a => console.log(a.json()));
 
+	}
+	loadData(){
+		this.get_balance();
+		wallet.get_txs().then((a)=>{
+			this.acc.txs=a.json().data.transactions;
+
+			this.refreshUI("start:txs","txs")
+		})
 	}
 }
 

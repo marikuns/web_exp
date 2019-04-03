@@ -2,9 +2,16 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<!-- Webix Library -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>XDNA WEB WALET</title>
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+	<link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
+	<link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="images/favicon.png" />
+
+	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="//cdn.webix.com/edge/webix.js"></script>
 	<link rel="stylesheet" type="text/css" href="//cdn.webix.com/edge/webix.css">
 
@@ -12,5 +19,96 @@
 	<script type="text/javascript" src="codebase/myapp.js"></script>
 	<link rel="stylesheet" type="text/css" href="codebase/myapp.css">
 </head>
-<body></body>
+<body>
+<div id="loading_overlay" class="container-scroller" style="background:#fff;position: absolute;left: 0px;width: 100%;min-height: 100vh;top: 0px;z-index: 20000;">
+</div>
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		  <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+			<a class="navbar-brand brand-logo" href="index.html">
+			  <img src="images/logo.png" alt="logo" />
+			</a>
+			<a class="navbar-brand brand-logo-mini" href="index.html">
+			  <img src="images/logo.png" alt="logo" />
+			</a>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-center" id="menu">
+					<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+							<li class="nav-item">
+											<a route="/top/start" class="nav-link">
+												<i class="mdi mdi-elevation-rise"></i>Dashboard</a>
+										</li>
+										<li class="nav-item">
+											<a route="/top/reqpay" class="nav-link">
+												<i class="fa fa-list-alt"></i>Addresses</a>
+										</li>
+								<li class="nav-item">
+											<a route="/top/trans" class="nav-link">
+												<i class="fa fa-random"></i>Transactions</a>
+										</li>
+								
+										<li class="nav-item">
+											<a route="/top/payto" class="nav-link">
+												<i class="fa fa-paper-plane-o"></i>Send</a>
+										</li>
+					
+								
+									</ul>
+
+
+					<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+						<span class="icon-menu"></span>
+					</button>
+				</div>
+		</nav>
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:partials/_sidebar.html -->
+			<nav class="sidebar sidebar-offcanvas" id="sidebar">
+			  <ul class="nav">
+	  
+				<li class="nav-item">
+				  <a class="nav-link" href="index.html">
+					
+					<span class="menu-title">Dashboard</span>
+				  </a>
+				</li>          
+				<li class="nav-item">
+				  <a class="nav-link" href="index.html">
+				   
+					<span class="menu-title">XDNA Mainpage</span>
+				  </a>
+				</li>		  
+				<li class="nav-item">
+				  <a class="nav-link" href="index.html">
+			 
+					<span class="menu-title">XDNA Foundation</span>
+				  </a>
+				</li>		  
+				<li class="nav-item">
+				  <a class="nav-link" href="index.html">
+			 
+					<span class="menu-title">XDNA Block explorer</span>
+				  </a>
+				</li>
+				
+			  </ul>
+			</nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper" id="mainpanel" style="padding: 0;">
+				</div>
+					<footer class="footer">
+							<div class="container-fluid clearfix">
+							&copy; 2018 - 2019 <a href="javascript:void(0);">XDNA Core</a>.
+							  
+							</div>
+						  </footer>
+						  <!-- partial -->
+						</div>
+		</div>
+
+
+
+</body>
 </html>
